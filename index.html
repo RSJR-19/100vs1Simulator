@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 vs. 1 Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div id="mainScreen">
+            <div class="title">
+                <h1>100 VS. 1 </h1>
+                <p>SIMULATOR</p>
+            </div>
+            <div class="sideA">
+                <h1>100</h1>
+                <span id="textSideA">Enter Player one below:</span>
+                <input class= "input-bar" type="text" id="inputA" autocorrect="off" autocomplete="off" spellcheck="false" maxlength="20">
+            </div>
+            <div class="versus">
+                <h1>VERSUS</h1>
+            </div>
+            <div class="sideB">
+                <h1>1</h1>
+                <span id="textSideB">Enter Player two below:</span>
+                <input type="text" class="input-bar" id="inputB" autocorrect="off" autocomplete="off" spellcheck="false" maxlength="20" >
+            </div>
+            <div class="fight">
+                 <button onclick="swap()">SWAP</button>
+                <button>FIGHT!</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
