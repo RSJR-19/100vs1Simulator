@@ -16,7 +16,7 @@
             <div class="sideA">
                 <h1>100</h1>
                 <span id="textSideA">Enter Player one below:</span>
-                <input class= "input-bar" type="text" id="inputA" autocorrect="off" autocomplete="off" spellcheck="false" maxlength="20">
+                <input class= "input-bar" type="text" id="inputA" autocorrect="off" autocomplete="off" spellcheck="false" maxlength="20" placeholder="Input 100...">
             </div>
             <div class="versus">
                 <h1>VERSUS</h1>
@@ -24,13 +24,45 @@
             <div class="sideB">
                 <h1>1</h1>
                 <span id="textSideB">Enter Player two below:</span>
-                <input type="text" class="input-bar" id="inputB" autocorrect="off" autocomplete="off" spellcheck="false" maxlength="20" >
+                <input type="text" class="input-bar" id="inputB" autocorrect="off" autocomplete="off" spellcheck="false" maxlength="20" placeholder="Input 1..." >
             </div>
             <div class="fight">
                  <button onclick="swap()">SWAP</button>
-                <button>FIGHT!</button>
+                <button onclick="fight()">FIGHT!</button>
             </div>
 
+        </div>
+        <div id="placeScreen">
+            <div id="playerASide">
+                <div class="left-A">
+                    <div class="img-space" id="uploadBoxA">click to add photo</div>
+                    <input type="file" id="fileInputA" accept="image/*">
+                </div>
+                <div class="right-A" style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0;">
+                    <h1 style="text-align: center;margin: 0;"><b>100</b></h1>
+                    <p id="AName" style="font-size: smaller; text-align: center;margin-bottom: 30px;">00000000000000000000</p>
+                    <button style="padding: 15px;border-radius: 10px;border: 2px solid black;">READY</button>
+                </div>
+
+            </div>
+            <div id="locationSide">
+                <h3 style="margin: 0; text-align: center;" id="locationH3">LOCATION:</h3>
+                <div class="img-location" id="uploadBoxLoc">click to add photo</div>
+                <input type="file" id="fileInputLoc" accept="image/*">
+                <input type="text" style="margin-top: 10px; padding: 5px;" id="locationInput" autocorrect="off" autocomplete="off" spellcheck="false" maxlength="20" placeholder="Input Battle Location...">
+
+            </div>
+            <div id="playerBSide">
+                <div class="left-B" style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0;">
+                    <h1 style="text-align: center;margin: 0;"><b>1</b></h1>
+                    <p id="BName" style="font-size: smaller; text-align: center;margin-bottom: 30px;">00000000000000000000</p>
+                    <button style="padding: 15px;border-radius: 10px;border: 2px solid black;">READY</button>
+                </div>
+                <div class="right-B">
+                    <div class="img-space" id="uploadBoxB">click to add photo</div>
+                    <input type="file" id="fileInputB" accept="image/*">
+                </div>
+            </div>
         </div>
 
     </div>

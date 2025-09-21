@@ -26,6 +26,15 @@ body{
     
 }
 
+#placeScreen {
+    display: flex;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    display: none;
+
+}
+
 .title {
     height: 20%;
     display: flex;
@@ -107,4 +116,65 @@ body{
 .fight button:active {
     box-shadow: none;
     transform: translateY(5px);
+}
+
+#playerASide, #playerBSide, #locationSide {
+    margin: 0;
+    height: 33%;
+}
+
+#playerASide, #playerBSide{
+
+    display: flex;
+    
+}
+
+#locationSide{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.img-location{
+    height: 60%;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.left-A,.right-A, .left-B, .right-B{
+    width: 50%;
+    
+}
+
+.left-A, .right-B{
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.img-space {
+    width: 90%;
+    height: 90%;
+
+    border-radius: 10px;
+}
+
+
+
+
+#uploadBoxA, #uploadBoxB, #uploadBoxLoc {
+    border: 2px dashed gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#fileInputA, #fileInputB, #fileInputLoc {
+    display: none;
 }
