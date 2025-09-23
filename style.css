@@ -42,14 +42,38 @@ body{
 
 #battleScreen {
     background-color:rgb(57, 216, 57);
-    display: flex;
+    position: relative;
     height: 100%;
-    display: flex;
     flex-direction: column;
     display: none;
     transition: all ease-in-out 0.5s;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
 
+}
+
+#overlayBattle{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    gap: 5px;
+}
+
+#overlayText{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    top: 0;
+    left: 0;
 }
 
 .title {
@@ -165,6 +189,26 @@ body{
     
 }
 
+#pictureLocation{
+    width: 300px;
+    height: 180px;
+    border: 2px solid black;
+    opacity: 0;
+    transition: all ease-in-out 0.5s;
+}
+
+#pictureA, #pictureB{
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+
+}
+
+
+
+
+
+
 .left-A, .right-B{
  
     display: flex;
@@ -202,6 +246,33 @@ body{
     transition: all ease-in-out 0.5s;
 }
 
+#playerAOverlay{
+    height: 50%;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.199);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+#playerBOverlay{
+    height: 50%;
+    width: 100%;
+    background-color: rgba(0, 0, 255, 0.17);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#playerAh2, #playerBh2{
+    opacity: 0;
+    transition: all ease-in-out 0.5s;
+}
+
+#playerAh2.active, #playerBh2.active{
+    opacity: 1;
+}
+
+
 #readyBtnA.active{
     background-color: red;
 }
@@ -224,3 +295,37 @@ body{
 #battleScreen.active{
     opacity:1;
 }
+
+#pictureLocation.active{
+    opacity: 1;
+}
+
+#pictureA.enter{
+    animation: enterA 1s ease forwards;
+}
+
+#pictureB.enter{
+    animation: enterB 1s ease forwards;
+}
+
+
+#pictureA {
+    transform: translateY(-400px);
+}
+
+#pictureB{
+    transform: translateY(400px);
+}
+
+@keyframes enterA {
+    0% { transform: translateY(-400px)}
+    100% {transform: translateY(0)}
+}
+  
+
+@keyframes enterB{
+     0% { transform: translateY(400px);}
+    100% {transform: translateY(0)}
+   
+}
+

@@ -16,6 +16,9 @@ const battleScreen = document.getElementById("battleScreen");
 const uplaodBoxA = document.getElementById("uploadBoxA");
 const uplaodBoxLoc = document.getElementById("uploadBoxLoc");
 const uplaodBoxB = document.getElementById("uploadBoxB");
+const pictureLocation = document.getElementById("pictureLocation");
+const pictureA = document.getElementById("pictureA");
+const pictureB = document.getElementById("pictureB");
 
 const readyBtnA = document.getElementById("readyBtnA");
 const readyBtnB = document.getElementById("readyBtnB");
@@ -23,6 +26,9 @@ const readyBtnB = document.getElementById("readyBtnB");
 const fileInputA = document.getElementById("fileInputA");
 const fileInputLoc = document.getElementById("fileInputLoc");
 const fileInputB = document.getElementById("fileInputB");
+
+const playerAh2 = document.getElementById("playerAh2");
+const playerBh2 = document.getElementById("playerBh2");
 
 let isPlayerAReady = false;
 let isPlayerBReady = false;
@@ -192,17 +198,34 @@ function readyB(){
 }
 
 function checkState(){
-    if (isPlayerAReady === true && isPlayerBReady === true && isLocationGiven === true){
+    if (isPlayerAReady === true){   /*if (isPlayerAReady === true && isPlayerBReady === true && isLocationGiven === true){*/
        placeScreen.classList.remove('active');
        setTimeout(()=>{
         placeScreen.style.display = "none";
         battleScreen.style.display = "flex";
         setTimeout(()=>{
             battleScreen.classList.add("active");
+            setTimeout(()=>{
+                pictureLocation.classList.add("active");
+                startAnimation()
+            },600)
         },100)
        },500)
     
     }
 
 
+}
+
+function startAnimation(){
+    setTimeout(()=>{
+    pictureA.classList.add("enter");
+    pictureB.classList.add("enter");
+    setTimeout(()=>{
+        playerAh2.classList.add('active');
+        playerBh2.classList.add('active');
+        playerAh2.innerHTML = `100 ${inputA.value}`;
+        playerBh2.innerHTML = `1 ${inputB.value}`;
+    },1100)
+    },600)
 }
