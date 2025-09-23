@@ -28,6 +28,28 @@ body{
     
 }
 
+#returnBtn{
+padding: 15px;
+transform: translateY(300px);
+border-radius: 10px;
+border: 2px black solid;
+background-color: rgb(226, 226, 15);
+}
+
+#finalResult{
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    transition: all ease-in-out 2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+
+}
+
 #placeScreen {
     display: flex;
     height: 100%;
@@ -62,6 +84,7 @@ body{
     align-items: center;
     position: absolute;
     gap: 5px;
+    transition: all ease-in-out 1.5s;
 }
 
 #overlayText{
@@ -100,7 +123,6 @@ body{
 
 .sideA, .sideB{
     height: 30%;
-    background-color: yellow;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -195,16 +217,34 @@ body{
     border: 2px solid black;
     opacity: 0;
     transition: all ease-in-out 0.5s;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 #pictureA, #pictureB{
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
     border: 2px solid black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 15px;
 
 }
 
-
+#resultH1{
+    color: white;
+}
 
 
 
@@ -244,12 +284,12 @@ body{
 
 #readyBtnA, #readyBtnB {
     transition: all ease-in-out 0.5s;
+    background-color: gray;
 }
 
 #playerAOverlay{
     height: 50%;
     width: 100%;
-    background-color: rgba(255, 0, 0, 0.199);
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -257,13 +297,13 @@ body{
 #playerBOverlay{
     height: 50%;
     width: 100%;
-    background-color: rgba(0, 0, 255, 0.17);
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
 #playerAh2, #playerBh2{
+    text-align: center;
     opacity: 0;
     transition: all ease-in-out 0.5s;
 }
@@ -282,6 +322,10 @@ body{
 
 #locationSide.active{
     background-color: yellow;
+}
+
+#overlayBattle.active{
+    background-color: black;
 }
 
 #mainScreen.active{
@@ -317,6 +361,34 @@ body{
     transform: translateY(400px);
 }
 
+#pictureA.fight{
+    animation: fightA 1.5s ease-in-out infinite;
+}
+
+#pictureB.fight{
+    animation: fightB 1.5s ease-in-out infinite;
+}
+
+#pictureA.win{
+    animation: winA 1s ease forwards;
+}
+
+#pictureA.lose{
+    animation: loseA 1s ease forwards;
+}
+
+#pictureB.win{
+    animation: winB 1s ease forwards;
+}
+
+#pictureB.lose{
+    animation: loseB 1s ease forwards;
+}
+
+#finalResult.active{
+    opacity: 1;
+}
+
 @keyframes enterA {
     0% { transform: translateY(-400px)}
     100% {transform: translateY(0)}
@@ -324,8 +396,53 @@ body{
   
 
 @keyframes enterB{
-     0% { transform: translateY(400px);}
+    0% { transform: translateY(400px);}
     100% {transform: translateY(0)}
    
 }
 
+@keyframes fightA {
+    0%   { transform: translateY(0); }
+    20%  { transform: translateY(40px); } 
+    25%  { transform: translateY(0) scale(1.1); }
+    50%  { transform: translateY(-30px); }
+    70%  { transform: translateY(40px); }  
+    75%  { transform: translateY(0) scale(1.1); } 
+    100% { transform: translateY(0); }
+
+}
+
+@keyframes fightB {
+    0%   { transform: translateY(0); }
+    20%  { transform: translateY(-40px); }  
+    25%  { transform: translateY(0) scale(1.1); } 
+    50%  { transform: translateY(30px); }   
+    70%  { transform: translateY(-40px); }  
+    75%  { transform: translateY(0) scale(1.1); }
+    100% { transform: translateY(0); }      
+
+}
+
+@keyframes winA{
+    from {transform: translateY(0)}
+    to {transform: translateY(90px) scale(1.5);}
+
+}
+
+@keyframes winB{
+    from {transform: translateY(0);}
+    to {transform: translateY(-90px) scale(1.5)}
+
+}
+
+@keyframes loseA{
+    from {transform: translateY(0)}
+    to {transform: translateY(-400px)}
+
+}
+
+@keyframes loseB{
+    from {transform: translateY(0)}
+    to {transform: translateY(400px)}
+
+}
