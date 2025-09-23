@@ -2,6 +2,7 @@ const inputA = document.getElementById("inputA")
 const inputB = document.getElementById("inputB")
 const AName = document.getElementById("AName");
 const BName = document.getElementById("BName");
+const locationSide = document.getElementById("locationSide");
 
 const textSideA = document.getElementById("textSideA")
 const textSideB = document.getElementById("textSideB")
@@ -10,14 +11,22 @@ const locationInput = document.getElementById('locationInput');
 
 const mainScreen = document.getElementById("mainScreen");
 const placeScreen = document.getElementById("placeScreen");
+const battleScreen = document.getElementById("battleScreen");
 
 const uplaodBoxA = document.getElementById("uploadBoxA");
 const uplaodBoxLoc = document.getElementById("uploadBoxLoc");
 const uplaodBoxB = document.getElementById("uploadBoxB");
 
+const readyBtnA = document.getElementById("readyBtnA");
+const readyBtnB = document.getElementById("readyBtnB");
+
 const fileInputA = document.getElementById("fileInputA");
 const fileInputLoc = document.getElementById("fileInputLoc");
 const fileInputB = document.getElementById("fileInputB");
+
+let isPlayerAReady = false;
+let isPlayerBReady = false;
+let isLocationGiven = false;
 
 inputA.addEventListener("input", function() {
     if (inputA.value === ""){
@@ -73,11 +82,25 @@ function swap(){
 locationInput.addEventListener('input', ()=>{
     if (locationInput.value === ""){
         locationH3.textContent = "LOCATION: ";
+        locationSide.classList.remove("active");
+        isLocationGiven = false;
+        checkState()
+        
     }
     else{
         locationH3.textContent = `LOCATION: ${locationInput.value}`;
+        locationSide.classList.add("active");
+        isLocationGiven = true;
+        
     }
 })
+
+locationInput.addEventListener('keydown', (event)=>{
+    if (event.key === "Enter"){
+        if (locationInput.value !== ""){
+            checkState()
+        }}})
+
 
 /*
 function fight(){
@@ -98,8 +121,14 @@ function fight(){
 */
 
 function fight(){
+    mainScreen.classList.add('active');
+    setTimeout(()=>{
     mainScreen.style.display = "none";
     placeScreen.style.display = 'flex';
+    setTimeout(()=>{
+        placeScreen.classList.add('active');
+    },200)
+    },600)
 }
 
 uplaodBoxA.addEventListener('click', ()=>{
@@ -147,4 +176,33 @@ fileInputB.addEventListener('change', (event)=>{
     readerB.readAsDataURL(fileB);
 }
 })
+
+
+
+function readyA(){
+    readyBtnA.classList.add("active");
+    isPlayerAReady = true;
+    checkState()
+}
+
+function readyB(){
+    readyBtnB.classList.add("active");
+    isPlayerBReady = true;
+    checkState()
+}
+
+function checkState(){
+    if (isPlayerAReady === true && isPlayerBReady === true && isLocationGiven === true){
+       placeScreen.classList.remove('active');
+       setTimeout(()=>{
+        placeScreen.style.display = "none";
+        battleScreen.style.display = "flex";
+        setTimeout(()=>{
+            battleScreen.classList.add("active");
+        },100)
+       },500)
     
+    }
+
+
+}

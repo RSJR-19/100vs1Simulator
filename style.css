@@ -23,6 +23,8 @@ body{
     height: 100%;
     display: flex;
     flex-direction: column;
+    transition: all ease-in-out 0.5s;
+    opacity: 1;
     
 }
 
@@ -32,6 +34,21 @@ body{
     display: flex;
     flex-direction: column;
     display: none;
+    transition: all ease-in-out 0.5s;
+    opacity: 0;
+
+}
+
+
+#battleScreen {
+    background-color:rgb(57, 216, 57);
+    display: flex;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    transition: all ease-in-out 0.5s;
+    opacity: 0;
 
 }
 
@@ -163,7 +180,9 @@ body{
 }
 
 
-
+#locationSide{
+    transition: all ease-in-out 0.2s;
+}
 
 #uploadBoxA, #uploadBoxB, #uploadBoxLoc {
     border: 2px dashed gray;
@@ -177,4 +196,31 @@ body{
 
 #fileInputA, #fileInputB, #fileInputLoc {
     display: none;
+}
+
+#readyBtnA, #readyBtnB {
+    transition: all ease-in-out 0.5s;
+}
+
+#readyBtnA.active{
+    background-color: red;
+}
+#readyBtnB.active{
+    background-color: blue;
+}
+
+#locationSide.active{
+    background-color: yellow;
+}
+
+#mainScreen.active{
+    opacity: 0;
+}
+
+#placeScreen.active{
+    opacity: 1;
+}
+
+#battleScreen.active{
+    opacity:1;
 }
