@@ -42,6 +42,8 @@ let isPictureLocGiven = false;
 let isPictureAGiven = false;
 let isPictureBGiven = false;
 
+let winnerSide = "";
+
 let randomizer = Math.floor(Math.random() * 100) + 1;
 
 inputA.addEventListener("input", function() {
@@ -114,6 +116,7 @@ locationInput.addEventListener('input', ()=>{
 locationInput.addEventListener('keydown', (event)=>{
     if (event.key === "Enter"){
         if (locationInput.value !== ""){
+            locationInput.blur()
             checkState()
         }}})
 
@@ -127,8 +130,7 @@ function fight(){
             AName.innerHTML = inputA.value;
             BName.innerHTML = inputB.value;
             setTimeout(()=>{
-             placeScreen.classList.add('active');
-    },200)
+             placeScreen.classList.add('active');},200)
         }, 300)}
     else if (inputA.value  === ""){
         inputA.focus()
@@ -259,9 +261,9 @@ function checkState(){
             setTimeout(()=>{
                 pictureLocation.classList.add("active");
                 startAnimation()
-            },600)
+            },700)
         },100)
-       },500)
+       },600)
     
     }
 
@@ -272,6 +274,9 @@ function startAnimation(){
     setTimeout(()=>{
     pictureA.classList.add("enter");
     pictureB.classList.add("enter");
+    pictureA.style.opacity = "1";
+    pictureB.style.opacity = "1";
+
     setTimeout(()=>{
         playerAh2.classList.add('active');
         playerBh2.classList.add('active');
@@ -289,12 +294,12 @@ function startAnimation(){
 
                 if (randomizer >= 1 && randomizer <= 50){
                     console.log(randomizer)
-    
+                    winnerSide = `${inputA.value}`
                    pictureA.classList.add('win');
                    pictureB.classList.add('lose');
                 }
                 else{
-        
+                    winnerSide = `${inputB.value}`
                     pictureB.classList.add('win');
                    pictureA.classList.add('lose');
                 }
@@ -302,7 +307,7 @@ function startAnimation(){
                 setTimeout(()=>{
                     overlayBatlle.classList.add("active");
                     setTimeout(()=>{
-                        resultH1.innerHTML = `100 ${inputA.value}<br> vs <br> 1 ${inputB.value} <br> Location: ${locationInput.value} <br> <br> WINNER: `
+                        resultH1.innerHTML = `100 ${inputA.value}<br> vs <br> 1 ${inputB.value} <br> Location: ${locationInput.value} <br> <br> WINNER: ${winnerSide}`;
                         resultH1.style.textAlign = "center";
                         finalResult.classList.add('active');
                     },1400)
@@ -314,7 +319,7 @@ function startAnimation(){
             },7500)
         },1200)
     },1100)
-    },600)
+    },1200)
 }
 
 function returnHome(){
@@ -367,7 +372,13 @@ function returnHome(){
             playerBh2.classList.remove("active");
             overlayBatlle.classList.remove("active");
             finalResult.classList.remove("active");
+
+            pictureA.style.opacity = "0";
+            pictureB.style.opacity = "0";
+            winnerSide = "";
+
         mainScreen.style.display = "flex";
+
         setTimeout(()=>{
             mainScreen.classList.remove("active");
 
@@ -377,3 +388,5 @@ function returnHome(){
 
 
 }
+
+/*miss ko na siya*/
